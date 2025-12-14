@@ -1,14 +1,14 @@
 return {
   "github/copilot.vim",
-  event = "InsertEnter",
+  lazy = false,
   config = function()
     -- Disable default Tab mapping so you can define your own
     vim.g.copilot_no_tab_map = true
 
-    -- Optional: limit Copilot to certain filetypes
+    -- Enable Copilot for these filetypes
     vim.g.copilot_filetypes = {
-      markdown = false,
-      text = false,
+      markdown = true,
+      text = true,
       rust = true,
       lua = true,
       python = true,
