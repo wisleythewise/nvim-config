@@ -15,7 +15,7 @@ return {
     }
 
     -- Keymaps for Copilot actions
-    vim.keymap.set("i", "<Tab>", 'copilot#Accept("<Tab>")', {
+    vim.keymap.set("i", "<C-g>", 'copilot#Accept("<Tab>")', {
       expr = true,
       replace_keycodes = false,
       silent = true,
