@@ -4,6 +4,27 @@ vim.o.concealcursor = ""
 
 return {
   {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "BufReadPost",
+    opts = {
+      enable = true,
+      max_lines = 10,
+      min_window_height = 0,
+      line_numbers = true,
+      multiline_threshold = 20,
+      trim_scope = "inner",
+    },
+    keys = {
+      {
+        "[c",
+        function()
+          require("treesitter-context").go_to_context(vim.v.count1)
+        end,
+        desc = "Jump to context",
+      },
+    },
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {

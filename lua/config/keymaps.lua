@@ -4,3 +4,6 @@
 
 -- Leader+r: Substitute word under cursor
 vim.keymap.set("n", "<leader>r", ":%s/<C-r><C-w>//gc<Left><Left><Left>", { desc = "Substitute word under cursor" })
+
+-- LSP hover info
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover info" })

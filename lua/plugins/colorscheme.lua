@@ -11,14 +11,14 @@ return {
         transparency = false,
       },
       highlight_groups = {
-        -- Force charcoal black background
-        Normal = { bg = "#1c1c1c" },
-        NormalFloat = { bg = "#1c1c1c" },
-        NormalNC = { bg = "#1c1c1c" },
-        SignColumn = { bg = "#1c1c1c" },
-        LineNr = { bg = "#1c1c1c", fg = "#3a3a3a" },               -- Subtle dark gray line numbers
-        CursorLineNr = { bg = "#1c1c1c", fg = "#4a4a4a" },         -- Slightly brighter for current line
-        EndOfBuffer = { bg = "#1c1c1c" },
+        -- Pure black background
+        Normal = { bg = "#000000" },
+        NormalFloat = { bg = "#000000" },
+        NormalNC = { bg = "#000000" },
+        SignColumn = { bg = "#000000" },
+        LineNr = { bg = "#000000", fg = "#3a3a3a" },               -- Subtle dark gray line numbers
+        CursorLineNr = { bg = "#000000", fg = "#4a4a4a" },         -- Slightly brighter for current line
+        EndOfBuffer = { bg = "#000000" },
 
 
         -- Variables (BRIGHT for colorblind visibility)
@@ -50,7 +50,7 @@ return {
         ["@constant"] = { fg = "gold" },                           -- Constants: gold
         ["@constant.builtin"] = { fg = "gold" },                   -- True, False, None: gold
         ["@string"] = { fg = "gold" },                             -- Strings: gold
-        ["@string.documentation"] = { fg = "pine" },               -- Docstrings: green
+        ["@string.documentation"] = { fg = "#6e6e6e", italic = true }, -- Docstrings: light grey italic
         ["@number"] = { fg = "gold" },                             -- Numbers: gold
         ["@boolean"] = { fg = "rose" },                            -- Booleans: pink
 
@@ -63,7 +63,8 @@ return {
         ["@attribute"] = { fg = "iris" },                          -- Attributes: purple
 
         -- Comments
-        ["@comment"] = { fg = "muted", italic = true },            -- Comments: muted italic
+        Comment = { fg = "#6e6e6e", italic = true },               -- Standard vim comments: light grey italic
+        ["@comment"] = { fg = "#6e6e6e", italic = true },          -- Treesitter comments: light grey italic
       },
     },
   },
