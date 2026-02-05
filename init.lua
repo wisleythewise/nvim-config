@@ -6,6 +6,9 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.undofile = false
 
+-- Make Escape respond instantly
+vim.opt.ttimeoutlen = 0
+
 -- Use OSC52 for clipboard only when running inside Docker
 local function is_docker()
   local f = io.open("/.dockerenv", "r")
