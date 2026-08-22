@@ -34,7 +34,9 @@ require("lazy").setup({
   checker = {
     enabled = true, -- check for plugin updates periodically
     notify = false, -- notify on update
-  }, -- automatically check for plugin updates
+    frequency = 86400, -- check once per day, not on every startup
+    concurrency = 1, -- limit concurrent checks
+  },
   performance = {
     rtp = {
       -- disable some rtp plugins

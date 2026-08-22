@@ -1,5 +1,13 @@
 return {
   "ThePrimeagen/99",
+  keys = {
+    { "<leader>9v", mode = "v", desc = "99: Visual prompt (replace selection)" },
+    { "<leader>9s", desc = "99: Search project" },
+    { "<leader>9b", desc = "99: Vibe (background generation)" },
+    { "<leader>9x", desc = "99: Stop all requests" },
+    { "<leader>9o", desc = "99: Open last result" },
+    { "<leader>9l", desc = "99: View logs" },
+  },
   config = function()
     local _99 = require("99")
     local Providers = require("99.providers")
@@ -12,7 +20,7 @@ return {
     _99.setup({
       provider = Providers.ClaudeCodeProvider,
       logger = {
-        level = _99.DEBUG,
+        level = _99.WARN,
         path = "/tmp/" .. basename .. ".99.debug",
         print_on_error = true,
       },
@@ -31,32 +39,35 @@ return {
       },
     })
 
-          -- Create your own short cuts for the different types of actions
-    vim.keymap.set("n", "<leader>9f", function()
-      _99.fill_in_function()
-    end)
-          -- take extra note that i have visual selection only in v mode
-          -- technically whatever your last visual selection is, will be used
-          -- so i have this set to visual mode so i dont screw up and use an
-          -- old visual selection
-          --
-          -- likely ill add a mode check and assert on required visual mode
-          -- so just prepare for it now
+    -- visual mode only: takes the current selection, prompts you, and
+    -- replaces the selection with the result
     vim.keymap.set("v", "<leader>9v", function()
-      _99.visual_prompt()
+      _99.visual()
     end)
 
-          --- if you have a request you dont want to make any changes, just cancel it
-    vim.keymap.set("v", "<leader>9s", function()
+    -- search across the project with a prompt, results land in the quickfix list
+    vim.keymap.set("n", "<leader>9s", function()
+      _99.search()
+    end)
+
+    -- vibe: agentic generation in the background (replaces old fill_in_function)
+    vim.keymap.set("n", "<leader>9b", function()
+      _99.vibe()
+    end)
+
+    -- cancel any in-flight requests
+    vim.keymap.set("n", "<leader>9x", function()
       _99.stop_all_requests()
     end)
 
-          --- Example: Using rules + actions for custom behaviors
-          --- Create a rule file like ~/.rules/debug.md that defines custom behavior.
-          --- For instance, a "debug" rule could automatically add printf statements
-          --- throughout a function to help debug its execution flow.
-    vim.keymap.set("n", "<leader>9fd", function()
-      _99.fill_in_function()
+    -- open the last result (qfix for search/vibe, tutorial window for tutorial)
+    vim.keymap.set("n", "<leader>9o", function()
+      _99.open()
+    end)
+
+    -- view the most recent logs
+    vim.keymap.set("n", "<leader>9l", function()
+      _99.view_logs()
     end)
   end,
 }

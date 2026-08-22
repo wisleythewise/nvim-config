@@ -1,3 +1,7 @@
+-- Set VM options BEFORE loading plugins to ensure they're applied
+vim.g.VM_maps = { ["Exit"] = "<Esc>" }
+vim.g.VM_quit_after_leaving_insert_mode = 1
+
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
