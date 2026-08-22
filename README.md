@@ -1,3 +1,5 @@
+> **MERGED** into https://github.com/wisleythewise/dotfiles — use that monorepo. This repo is archived.
+
 # 💤 LazyVim
 
 A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
